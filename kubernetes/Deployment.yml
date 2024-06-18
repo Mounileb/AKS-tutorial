@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mounika-deployment
+  labels:
+    app: mounika-tut
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mounika-tut
+  template:
+    metadata:
+      labels:
+        app: mounika-tut
+    spec:
+      containers:
+        - name: mounika-tut
+          image: demaksac.azurecr.io/mounilebakstutorial:21
+          ports:
+            - containerPort: 80
