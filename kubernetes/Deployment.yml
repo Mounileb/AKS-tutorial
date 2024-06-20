@@ -19,3 +19,22 @@ spec:
           image: demaksac.azurecr.io/mounilebakstutorial:21
           ports:
             - containerPort: 80
+
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mounika-tut-loadbalancer-service
+  labels:
+    app: mounika-tut
+spec:
+  type: LoadBalancer
+  selector:
+    app: mounika-tut
+  ports:
+    - port: 80
+      targetPort: 80
+  ports:
+    - port: 80
+      targetPort: 80
