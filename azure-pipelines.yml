@@ -42,23 +42,4 @@ stages:
         targetPath: '$(Pipeline.Workspace)/s/kubernetes'
         artifact: 'manifests'
         publishLocation: 'pipeline'
-  - job: UpdateKubeManifest
-    displayName: 'Update Kubernetes Manifest'
-    dependsOn: Build
-    steps:
-    - script: |
-        # Clone the Kubernetes manifest repository
-        git clone git clone https://$(GITHUB_PAT)@github.com/Mounileb/AKS-tutorial.git
-
-        # Update the image tag in the Kubernetes manifest files
-        buildtag="$(Build.BuildNumber)"
-        cd AKS-tutorial-Kubernetes-Manifests
-        sed -i "s/mounikalebakstutorial:.*/mounikalebakstutorial:$buildtag/g" kubernetes/deployment.yaml
-
-        # Commit and push changes using GitHub PAT
-        git config user.email "$(GITHUB_EMAIL)"
-        git config user.name "Mounileb"
-        git add .
-        git commit -m "Update image tag to $buildtag"
-        git push origin main
-      displayName: 'Update Kubernetes Manifest'
+  
