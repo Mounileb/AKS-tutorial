@@ -48,7 +48,7 @@ stages:
     steps:
     - script: |
         # Clone the Kubernetes manifest repository
-        git clone https://$(GITHUB_PAT)@https://github.com/Mounileb/AKS-tutorial.git
+        git clone git clone https://$(GITHUB_PAT)@github.com/Mounileb/AKS-tutorial.git
 
         # Update the image tag in the Kubernetes manifest files
         buildtag="$(Build.BuildNumber)"
