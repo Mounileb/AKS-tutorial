@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mounika-tut
-          image: demaksac.azurecr.io/mounilebakstutorial:21
+          image: demaksac.azurecr.io/mounilebakstutorial:36
           ports:
             - containerPort: 80
 
