@@ -1,40 +1,35 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mounika-deployment
-  labels:
-    app: mounika-tut
+  name: my-azuredevops-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: mounika-tut
+      app: my-azuredevops
   template:
     metadata:
       labels:
-        app: mounika-tut
+        app: my-azuredevops
     spec:
       containers:
-        - name: mounika-tut
-          image: demaksac.azurecr.io/mounilebakstutorial:36
-          ports:
-            - containerPort: 80
-
-
-
+      - name: my-azuredevops
+        image: demaksac.azurecr.io/mounilebakstutorial:36
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+# service type loadbalancer       
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mounika-tut-loadbalancer-service
-  labels:
-    app: mounika-tut
+  name: my-azuredevops-svc
 spec:
-  type: LoadBalancer
   selector:
-    app: mounika-tut
+    app: my-azuredevops
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
       targetPort: 80
-  ports:
-    - port: 80
-      targetPort: 80
+  type: LoadBalancer
