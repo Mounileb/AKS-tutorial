@@ -53,7 +53,7 @@ stages:
         # Update the image tag in the Kubernetes manifest files
         buildtag="$(Build.BuildNumber)"
         cd AKS-tutorial-Kubernetes-Manifests
-        sed -i "s/mounikalebakstutorial:.*/:$buildtmounikalebakstutorial/g" kube-manifest/deployment.yaml
+        sed -i "s/mounikalebakstutorial:.*/mounikalebakstutorial:$buildtag/g" kubernetes/deployment.yaml
 
         # Commit and push changes using GitHub PAT
         git config user.email "$(GITHUB_EMAIL)"
