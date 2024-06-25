@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-azuredevops
-        image: demaksac.azurecr.io/mounilebakstutorial:36
+        image: demaksac.azurecr.io/mounilebakstutorial:60
         imagePullPolicy: Always
         ports:
         - containerPort: 80
